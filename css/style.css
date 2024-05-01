@@ -211,3 +211,19 @@ body{
     display: flex;
     align-items: flex-end;
 }
+
+
+/*//////// PARTE IZQUIERDA ////////////////////////*/
+.description__container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.description__container img {
+    max-width: 100px; 
+    height: auto;
+    margin-right: 10px;
+}
