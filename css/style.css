@@ -8,6 +8,7 @@
 }
 body{
     background: linear-gradient(var(--color--one), var(--color--one--rgba));
+    height: 100vh;
 }
 *::-webkit-scrollbar {
     height: 10px;
@@ -24,14 +25,34 @@ body{
     background-color: var(--color--one--rgba);
 }
 
-.header__title {
-    /* background: red; */
-    height: 10vh;
+header{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 30%;
+    padding: 15px;
 }
+
+header p, .header__title{
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(183, 233, 66);
+}
+
+.header__title{
+    margin-left: -11%;
+}
+
+.p1header{
+    margin-left: -5%;
+}
+
+.p2header{
+    margin-left: -5%;
+}
+
 
 .main {
     /* background: orange; */
@@ -90,7 +111,7 @@ body{
     background-color: purple;
 }
 .section__information__container{
-    background: #d9ff00;
+    
     grid-area: section__main;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -124,9 +145,23 @@ body{
     grid-area: table__colum__1;
 }
 .section__image{
-    background: orange;
     grid-area: colum__2;
 }
+
+
+.section__image img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+@media (max-width:800px) {
+    .section__image img{
+        width: 100%;
+        height: auto;
+    }
+}
+
 .section__information__3{
     background: violet;
     grid-area: colum__3;
@@ -154,7 +189,7 @@ body{
     grid-area: table__colum__2;
 }
 .footer {
-    background: coral;
+
     grid-area: section__footer;
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
@@ -166,6 +201,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 .footer ul li{
     list-style: none;
@@ -174,7 +210,24 @@ body{
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
+
+.footer img{
+    width: 100%;
+    height: auto;
+}
+
+.footer span:hover{
+    color: white;
+    border-bottom: 3px solid white;
+}
+
+.footer span{
+    font-weight: bold;
+    color: rgb(116, 116, 163);
+}
+
 .nav__information{
     /* background: red; */
     grid-area: nav__2;
@@ -226,4 +279,21 @@ body{
     max-width: 100px; 
     height: auto;
     margin-right: 10px;
+}
+
+.section__image_parrafos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.section__image_parrafos p{
+    color: red;
+    font-weight: bold;
+}
+
+.section__image_parrafos{
+    font-size: 9px;
 }

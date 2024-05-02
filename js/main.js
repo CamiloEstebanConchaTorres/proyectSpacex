@@ -34,7 +34,7 @@ let informationLeft = document.querySelector("#information__1");
 (async () => {
     try {
         let [rocketData, launchData] = await Promise.all([getAllRockets(), getAllLaunches()]);
-        let launchesToShow = launchData.slice(0, 40);
+        let launchesToShow = launchData.slice(0, 80);
         let html = "";
         launchesToShow.forEach(launch => {
             html += `
