@@ -10,6 +10,7 @@
 
 body {
     background: linear-gradient(var(--color--one), var(--color--one--rgba));
+    background: #353756;
 }
 
 *::-webkit-scrollbar {
@@ -260,6 +261,11 @@ body {
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
     grid-template-areas: ". footer__menu .";
+    position: fixed;
+    bottom: 0;
+    width: 130vh;
+    background: #353756;
+    z-index: 999; /* Ajusta este valor según sea necesario */
 }
 
 .footer ul {
@@ -407,8 +413,8 @@ progress[value]::-moz-progress-bar {
 
 .navesita{
     position: absolute;
-    max-width: 10%;
-    height: auto;
+    max-width: 15%;
+    max-height: 15%;
     bottom: 0;
     left: 5%;
 }
@@ -559,3 +565,5 @@ progress[value]::-moz-progress-bar {
 .table__container__2 div strong{
     color: var(--color--five);
 }
+
+
