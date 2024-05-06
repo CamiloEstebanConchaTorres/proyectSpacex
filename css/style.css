@@ -256,7 +256,6 @@ body {
 }
 
 .footer {
-    background: coral;
     grid-area: section__footer;
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
@@ -269,6 +268,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
 }
 
 .footer ul li {
@@ -279,6 +279,12 @@ body {
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    color: gray;
+    font-weight: bold;
+}
+
+.footer ul li a:hover{
+    color: white;
 }
 
 .nav__information {
@@ -377,4 +383,32 @@ progress[value]::-webkit-progress-value {
 progress[value]::-moz-progress-bar {
     border-radius: 10em;
     background: var(--color);
+}
+
+.text-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.text-container {
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#section__image {
+    position: relative;
+    overflow-x: auto;
+}
+
+.navesita{
+    position: absolute;
+    max-width: 10%;
+    height: auto;
+    bottom: 0;
+    left: 5%;
 }
