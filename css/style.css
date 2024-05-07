@@ -11,6 +11,10 @@
 body {
     background: linear-gradient(var(--color--one), var(--color--one--rgba));
     background: #353756;
+    background-image: url(../storage/img/IrF.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+  
 }
 
 *::-webkit-scrollbar {
@@ -264,7 +268,7 @@ body {
     position: fixed;
     bottom: 0;
     width: 130vh;
-    background: #353756;
+    background: #35375665;
     z-index: 999; /* Ajusta este valor según sea necesario */
 }
 
