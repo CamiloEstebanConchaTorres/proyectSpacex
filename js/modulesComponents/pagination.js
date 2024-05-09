@@ -34,6 +34,7 @@ import {
 } from "../modulesComponents/progressBar.js";
 
 
+let currentView = "rockets";
 
 const getRocketsId = async(e)=>{
     e.preventDefault();
@@ -51,7 +52,7 @@ const getRocketsId = async(e)=>{
     section__image.innerHTML = "";
 
 
-    
+
     let section__information__q = document.querySelector("#section__information__q");
     section__information__q.innerHTML = "";
     let section__information__w = document.querySelector("#section__information__w");
@@ -106,3 +107,87 @@ export const paginationRockets = async()=>{
     // </div>
     return div;
 }
+
+
+//////////////////////// CAPSULES //////////////////////////////////////////
+import { getAllCapsules, getAllCapsulesId } from "../modules/capsules.js";
+import { informationCapsules, informationCapsuleLaunchDate, informationCapsuleReuse } from "./information.js";
+
+const getCapsulesId = async (e) => {
+    e.preventDefault();
+    let a = e.target.parentElement.children;
+    for (let val of a) {
+        val.classList.remove('activo');
+    }
+    e.target.classList.add('activo');
+
+    let information__2 = document.querySelector("#information__2");
+    information__2.innerHTML = "";
+    let description__item = document.querySelector("#description__item");
+    description__item.innerHTML = "";
+    let section__image = document.querySelector("#section__image");
+    section__image.innerHTML = "";
+
+    let section__information__q = document.querySelector("#section__information__q");
+    section__information__q.innerHTML = "";
+    let section__information__w = document.querySelector("#section__information__w");
+    section__information__w.innerHTML = "";
+
+    let Capsule = await getAllCapsulesId(e.target.id);
+    console.log(Capsule);
+
+    await informationCapsules(Capsule.status, Capsule.original_launch);
+};
+
+export const paginationCapsules = async () => {
+    let capsules = await getAllCapsules();
+    let div = document.createElement("div");
+    div.classList.add("button__pagination");
+
+    capsules.forEach((val, id) => {
+        let a = document.createElement("a");
+        a.setAttribute("href", "#");
+        a.id = val.id;
+        a.textContent = id + 1;
+        a.addEventListener("click", getCapsulesId);
+        div.appendChild(a);
+    });
+
+    let [a1, a2, a3, a4] = div.children;
+    a3.click();
+
+    return div;
+};
+
+
+/////////////// eventos click //////////////////////
+
+const handleViewChange = async (view) => {
+    let information__2 = document.querySelector("#information__2");
+    information__2.innerHTML = "";
+    let description__item = document.querySelector("#description__item");
+    description__item.innerHTML = "";
+    let section__image = document.querySelector("#section__image");
+    section__image.innerHTML = "";
+
+    let section__information__q = document.querySelector("#section__information__q");
+    section__information__q.innerHTML = "";
+    let section__information__w = document.querySelector("#section__information__w");
+    section__information__w.innerHTML = "";
+
+    if (view === "rockets") {
+        currentView = "rockets";
+        await paginationRockets();
+    } else if (view === "capsules") {
+        currentView = "capsules";
+        await paginationCapsules();
+    }
+};
+
+document.querySelector('#Capsules-link').addEventListener('click', async () => {
+    await handleViewChange("capsules");
+});
+
+document.querySelector('#overview-link').addEventListener('click', async () => {
+    await handleViewChange("rockets");
+});
