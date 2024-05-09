@@ -1,6 +1,7 @@
 import {
     getAllRocketEngineTotal,
-    getAllRocketEngineThrustVacuumTotal
+    getAllRocketEngineThrustVacuumTotal,
+    getAllRocketData
 } from "../modules/rockets.js";
 
 
@@ -40,8 +41,6 @@ export const informRocketEngineThrustSeaLevel = async (thrust_sea_level) => {
 
 
 
-
-
 export const informRocketEngineThrustVacuum = async (thrust_vacuum) => {
     let { kN: totalKN } = await getAllRocketEngineThrustVacuumTotal();
     let percentage = (thrust_vacuum.kN * 100) / totalKN;
@@ -73,4 +72,49 @@ export const informRocketEngineThrustVacuum = async (thrust_vacuum) => {
     div.append(divFirst);
     let section__information__1 = document.querySelector("#section__information__1");
     section__information__1.append(div);
+};
+
+
+
+
+export const informRocketData = async () => {
+    let { totalRockets, activeRockets } = await getAllRocketData();
+    let div = document.createElement('div');
+    div.classList.add("carousel__item");
+    let divFirst = document.createElement('div');
+    divFirst.classList.add("item__progress__bar");
+    let percentage = (totalRockets * 100) / totalRockets;
+    let color = 'blue';
+    divFirst.style = `background: radial-gradient(closest-side, #1d1f38 85%, transparent 85% 100%), conic-gradient(${color} ${percentage}%, transparent 0)`;
+    let divFirstChildren = document.createElement('div');
+    divFirstChildren.classList.add("progress__value");
+    let strong = document.createElement('strong');
+    strong.textContent = "Total Rockets";
+    let smallFirst = document.createElement('small');
+    smallFirst.textContent = `${percentage.toFixed(2)} %`;
+    let smallLast = document.createElement('small');
+    smallLast.innerHTML = `${totalRockets}`;
+    divFirstChildren.append(strong, smallFirst, smallLast);
+    divFirst.append(divFirstChildren);
+    div.append(divFirst);
+    document.getElementById('section__information__q').append(div);
+    div = document.createElement('div');
+    div.classList.add("carousel__item");
+    divFirst = document.createElement('div');
+    divFirst.classList.add("item__progress__bar");
+    percentage = (activeRockets * 100) / totalRockets;
+    color = 'orange';
+    divFirst.style = `background: radial-gradient(closest-side, #1d1f38 85%, transparent 85% 100%), conic-gradient(${color} ${percentage}%, transparent 0)`;
+    divFirstChildren = document.createElement('div');
+    divFirstChildren.classList.add("progress__value");
+    strong = document.createElement('strong');
+    strong.textContent = "Active Rockets";
+    smallFirst = document.createElement('small');
+    smallFirst.textContent = `${percentage.toFixed(2)} %`;
+    smallLast = document.createElement('small');
+    smallLast.innerHTML = `${activeRockets}`;
+    divFirstChildren.append(strong, smallFirst, smallLast);
+    divFirst.append(divFirstChildren);
+    div.append(divFirst);
+    document.getElementById('section__information__w').append(div);
 };

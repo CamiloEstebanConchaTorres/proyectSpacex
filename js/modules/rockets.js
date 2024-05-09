@@ -187,7 +187,38 @@ export const getAllRocketEngineThrustVacuumTotal  = async() =>{
         })
     }
     let res = await fetch("https://api.spacexdata.com/v4/rockets/query", config);
-    // console.log(await res.json());
     let {docs:[{engines} = maxEnginesRocket]} = await res.json();
     return engines.thrust_vacuum;
 }
+
+
+
+export const getAllRocketData = async () => {
+    let config = {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({
+            "query": {
+                "options": {
+                    "select": {
+                        "rocket_name": 1,
+                        "first_flight": 1
+                    },
+                    "sort": {
+                        "first_flight": "asc"
+                    }
+                }
+            }
+        })
+    };
+    let res = await fetch("https://api.spacexdata.com/v4/rockets/query", config);
+    let { docs: rockets } = await res.json();
+    let totalData = {
+        totalRockets: rockets.length,
+        upcomingRockets: rockets.filter(rocket => new Date(rocket.first_flight) > new Date()).length,
+        activeRockets: rockets.filter(rocket => rocket.active === true).length
+    };
+    return totalData;
+};
