@@ -1,3 +1,5 @@
+////////////////////////////// TABLAS ROCKETS ////////////////////////////////////////////////////
+
 export const tableRocketColum1 = async (Rocket)=>{
 
     let information__table__1 = document.querySelector("#information__table__1");
@@ -143,3 +145,6 @@ export const tableRocketColum2 = async (Rocket)=>{
         
     // </div>
 }
+
+
+////////////////////////////////7 TABLAS CAPSULAS ////////////////////////////////////////////////7

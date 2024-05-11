@@ -1,3 +1,5 @@
+//////// IMAGENES ROCKETS ////////////////////////////////////////////////////////////////////////////
+
 export const imageRockets = async (flickr_images) => {
     let section__image = document.querySelector("#section__image");
     let divs = [];
@@ -13,11 +15,9 @@ export const imageRockets = async (flickr_images) => {
 
         divs.push(div);
     });
-
     section__image.append(...divs);
     let textContainer = document.createElement("div");
     textContainer.classList.add("text-container");
-    
     let text1 = document.createElement("div");
     text1.textContent = "CABIN MICS:";
     text1.style.color = "white";
@@ -31,3 +31,4 @@ export const imageRockets = async (flickr_images) => {
 };
 
 
+//////////////7 IMAGENES CAPSULAS /////////////////////////////////////////////////////////////

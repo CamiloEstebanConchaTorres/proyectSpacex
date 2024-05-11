@@ -1,3 +1,5 @@
+/////////////////////////// INFORMATION ROCKETS ///////////////////////////////////
+
 export const informationRockets = async(country, description)=>{
     let div = document.createElement('div');
     div.classList.add('description__container')
@@ -118,64 +120,5 @@ export const informationWebRocket = async(wikipedia)=>{
 }
 
 
-/////////////////////////// CAPSULES ////////////////////////////////////////////
+/////////////////////////// INFORMATION CAPSULES ////////////////////////////////////////////
 
-export const informationCapsules = async (status, originalLaunch) => {
-    let div = document.createElement('div');
-    div.classList.add('description__container');
-    let divFirst = document.createElement('div');
-    let img = document.createElement('img');
-    img.setAttribute("src", "storage/img/icons/capsule.svg");
-    divFirst.append(img);
-
-    let divLast = document.createElement('div');
-    let h3 = document.createElement('h3');
-    h3.textContent = "Capsule Status";
-    let small = document.createElement('small');
-    small.textContent = status;
-    divLast.append(h3, small);
-    div.append(divFirst, divLast);
-
-    let description__item = document.querySelector("#description__item");
-    description__item.append(div);
-};
-
-export const informationCapsuleLaunchDate = async (originalLaunch) => {
-    let div = document.createElement('div');
-    div.classList.add('description__container');
-    let divFirst = document.createElement('div');
-    let img = document.createElement('img');
-    img.setAttribute("src", "storage/img/icons/capsule.svg");
-    divFirst.append(img);
-
-    let divLast = document.createElement('div');
-    let h3 = document.createElement('h3');
-    h3.textContent = "Original Launch Date";
-    let small = document.createElement('small');
-    small.textContent = originalLaunch;
-    divLast.append(h3, small);
-    div.append(divFirst, divLast);
-
-    let description__item = document.querySelector("#description__item");
-    description__item.append(div);
-};
-
-export const informationCapsuleReuse = async (reuseCount) => {
-    let div = document.createElement('div');
-    div.classList.add('description__container');
-    let divFirst = document.createElement('div');
-    let img = document.createElement('img');
-    img.setAttribute("src", "storage/img/icons/capsule.svg");
-    divFirst.append(img);
-
-    let divLast = document.createElement('div');
-    let h3 = document.createElement('h3');
-    h3.textContent = "Capsule Reuse Count";
-    let small = document.createElement('small');
-    small.textContent = reuseCount.toString();
-    divLast.append(h3, small);
-    div.append(divFirst, divLast);
-
-    let description__item = document.querySelector("#description__item");
-    description__item.append(div);
-};

@@ -1,3 +1,5 @@
+//////////////////////////// INFORM ROCKETS /////////////////////////////////////////////////////////
+
 import {
     getAllRocketEngineTotal,
     getAllRocketEngineThrustVacuumTotal,
@@ -39,8 +41,6 @@ export const informRocketEngineThrustSeaLevel = async (thrust_sea_level) => {
     section__information__1.append(div);
 };
 
-
-
 export const informRocketEngineThrustVacuum = async (thrust_vacuum) => {
     let { kN: totalKN } = await getAllRocketEngineThrustVacuumTotal();
     let percentage = (thrust_vacuum.kN * 100) / totalKN;
@@ -73,9 +73,6 @@ export const informRocketEngineThrustVacuum = async (thrust_vacuum) => {
     let section__information__1 = document.querySelector("#section__information__1");
     section__information__1.append(div);
 };
-
-
-
 
 export const informRocketData = async () => {
     let { totalRockets, activeRockets } = await getAllRocketData();
@@ -118,3 +115,7 @@ export const informRocketData = async () => {
     div.append(divFirst);
     document.getElementById('section__information__w').append(div);
 };
+
+
+
+////////////////////////// INFORM CAPSULAS ////////////////////////////////////////////////////////////////////

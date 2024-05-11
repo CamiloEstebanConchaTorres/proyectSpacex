@@ -1,3 +1,5 @@
+////////////////////// PROGRESS BAR ROCKETS /////////////////////////////////////////////////////
+
 import { 
     getRocketMassTotal, 
     getRocketPayloadWeightsTotal, 
@@ -252,3 +254,6 @@ export const progressSecondStageHeightRocket = async(Rockets)=>{
     //     </div>
     // </div>
 }
+
+
+/////////////////// PROGRES BAR CAPSULAS //////////////////////////////////////////////////////////
