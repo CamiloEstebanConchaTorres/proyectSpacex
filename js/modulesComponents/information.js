@@ -121,4 +121,46 @@ export const informationWebRocket = async(wikipedia)=>{
 
 
 /////////////////////////// INFORMATION CAPSULES ////////////////////////////////////////////
+import{
+    getCapsulesData
+} from "../modules/capsules.js"
 
+export const informationCapsules = async () => {
+    try {
+      // Obtener los datos de las cápsulas
+      const capsulesData = await getCapsulesData();
+  
+      // Verificar si se obtuvieron los datos correctamente
+      if (!capsulesData) {
+        console.error("No se pudieron obtener los datos de las cápsulas");
+        return;
+      }
+  
+      // Iterar sobre los datos de las cápsulas y mostrar la información
+      capsulesData.forEach(capsule => {
+        // Crear elementos HTML
+        const div = document.createElement('div');
+        div.classList.add('description__container');
+  
+        const divFirst = document.createElement('div');
+        const img = document.createElement('img');
+        img.setAttribute('src', 'storage/img/icons/mech.svg');
+        divFirst.appendChild(img);
+  
+        const divLast = document.createElement('div');
+        const h3 = document.createElement('h3');
+        h3.textContent = capsule.capsule_serial; // Usar el número de serie como título
+        const small = document.createElement('small');
+        small.textContent = capsule.details; // Usar los detalles como descripción
+        divLast.append(h3, small);
+  
+        div.append(divFirst, divLast);
+  
+        // Agregar el contenedor al elemento con id "description__item"
+        const descriptionItem = document.querySelector('#description__item');
+        descriptionItem.appendChild(div);
+      });
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  };

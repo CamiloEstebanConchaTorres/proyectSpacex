@@ -8,6 +8,11 @@ import {
     getRocketSecondStageCompositeFairingDiameterTotal,
     getRocketSecondStageCompositeFairingHeightTotal
 } from "../modules/rockets.js";
+
+import{
+    getCapsuleTotalMass
+} from "../modules/capsules.js"
+
 export const progressRocketWeight = async(Rockets)=>{
     let {kg} = await getRocketMassTotal();
     let conterDiv = [];
@@ -257,3 +262,45 @@ export const progressSecondStageHeightRocket = async(Rockets)=>{
 
 
 /////////////////// PROGRES BAR CAPSULAS //////////////////////////////////////////////////////////
+
+export const progressCapsuleWeight = async (Capsules) => {
+    // Verificar si Capsules es un array
+    if (typeof Capsules !== 'object' || !Array.isArray(Capsules)) {
+        console.error("Capsules is not an array");
+        return;
+    }
+
+    let totalMass = await getCapsuleTotalMass();
+    let counterDiv = [];
+
+    Capsules.forEach((capsule) => {
+        let divInformationContainer = document.createElement("div");
+        divInformationContainer.classList.add("information__container");
+
+        let divFirst = document.createElement("div");
+        let labelFirst = document.createElement("label");
+        labelFirst.textContent = "Capsule weight:";
+
+        let ProgressFirst = document.createElement("progress");
+        ProgressFirst.max = totalMass;
+        ProgressFirst.value = `${capsule.dry_mass_kg || 0}`;
+        ProgressFirst.textContent = `${capsule.dry_mass_kg || 0}%`;
+
+        let divLast = document.createElement("div");
+        let spanLast = document.createElement("span");
+
+        let numKg = new Intl.NumberFormat('en').format(capsule.dry_mass_kg || 0);
+        let numLb = new Intl.NumberFormat('en').format(capsule.dry_mass_lb || 0);
+        spanLast.innerHTML = `${numKg} kg <br> ${numLb} lb`;
+
+        divFirst.append(labelFirst);
+        divFirst.append(ProgressFirst);
+        divLast.append(spanLast);
+        divInformationContainer.append(divFirst);
+        divInformationContainer.append(divLast);
+        counterDiv.push(divInformationContainer);
+    });
+
+    let information__2 = document.querySelector("#information__2");
+    information__2.append(...counterDiv);
+};
