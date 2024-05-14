@@ -15,13 +15,17 @@ import {
     informationWebRocket,
     informationCapsuleType,
     informationCapsuleStatus,
-    informationCapsuleLastUpdate
+    informationCapsuleLastUpdate,
+    informationCoresStatus,
+    informationCoreLastUpdate
 } from "./information.js";
 import { 
     tableRocketColum1, 
     tableRocketColum2,
     tableCapsulesLaunches,
-    tableCapsulesserial
+    tableCapsulesserial,
+    tableCoresLaunches,
+    tableCoreLaunchesid
 } from "./tables.js";
 import { 
     informRocketEngineThrustSeaLevel, 
@@ -39,7 +43,8 @@ import {
     progressDiameterRocket,
     progressSecondStageDiameterRocket,
     progressSecondStageHeightRocket,
-    progressCapsuleStats
+    progressCapsuleStats,
+    progressCoresStats
 } from "../modulesComponents/progressBar.js";
 
 import { 
@@ -311,10 +316,20 @@ const getCoresId = async(e)=>{
     section__information__w.innerHTML = "";
     
     
+    let sectionImage = document.querySelector("#section__information__1");
+    let img = document.createElement("img");
+    img.setAttribute("src", "storage/img/tierra.gif");
+    img.classList.add("imagen-paginacion-capsula");
+    sectionImage.appendChild(img);
+
     let Cores = await getAllCoresId(e.target.id);
     console.log(Cores);
     await nameCores(Cores.serial)
-    
+    await progressCoresStats(Cores)
+    await informationCoresStatus(Cores)
+    await informationCoreLastUpdate(Cores)
+    await tableCoresLaunches(Cores)
+    await tableCoreLaunchesid(Cores)
 }
 
 export const paginationCores = async(page=1, limit=4)=>{  
@@ -346,7 +361,7 @@ export const paginationCores = async(page=1, limit=4)=>{
     div.appendChild(end);
     console.log(div);
     let [back, a1,a2,a3,a4, next] = div.children
-    a1.click();
+    a2.click();
     // <div class="buttom__paginacion">
     //     <a href="#">&laquo;</a> 
     //     <a href="#" class="activo">1</a>

@@ -13,6 +13,10 @@ import{
     getCapsuleStats
 }   from "../modules/capsules.js"
 
+import{
+    getCoresStats
+}   from "../modules/cores.js"
+
 export const progressRocketWeight = async(Rockets)=>{
     let {kg} = await getRocketMassTotal();
     let conterDiv = [];
@@ -338,6 +342,136 @@ export const progressCapsuleStats = async (Capsules) => {
         divInformationContainer.append(document.createElement("br"));
         divInformationContainer.append(divLandLandings);
         divInformationContainer.append(progressLandLandings);
+        document.querySelector("#information__2").appendChild(divInformationContainer);
+    });
+};
+/////////////////// PROGRES BAR CORES //////////////////////////////////////////////////////////
+
+export const progressCoresStats = async (Cores) => {
+    let { reuse_count, rtls_attempts, rtls_landings, asds_attempts, asds_landings } = await getCoresStats();
+
+    [Cores].forEach((val) => {
+        let divInformationContainer = document.createElement("div");
+        divInformationContainer.style.textAlign = "center";
+        divInformationContainer.style.fontSize = "16px";
+        divInformationContainer.style.marginBottom = "15px";
+
+        let divReuseCount = document.createElement("div");
+        let labelReuseCount = document.createElement("label");
+        labelReuseCount.textContent = "Reuse Count:";
+        labelReuseCount.style.color = "white";
+        divReuseCount.append(labelReuseCount);
+
+        let progressReuseCount = document.createElement("progress");
+        progressReuseCount.max = reuse_count;
+        progressReuseCount.value = val.reuse_count;
+        progressReuseCount.textContent = val.reuse_count === 0 ? "No hay datos" : `${val.reuse_count}`;
+
+        if (val.reuse_count === 0) {
+            progressReuseCount.style.color = "white";
+            progressReuseCount.style.backgroundColor = "red";
+        } else if (val.reuse_count === 1) {
+            progressReuseCount.style.color = "white";
+            progressReuseCount.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+        } else if (val.reuse_count === 2) {
+            progressReuseCount.style.color = "white";
+            progressReuseCount.style.backgroundColor = "yellow";
+        } else {
+            progressReuseCount.style.color = "white";
+            progressReuseCount.style.backgroundColor = "green";
+        }
+
+        let divRtlsAttempts = document.createElement("div");
+        let labelRtlsAttempts = document.createElement("label");
+        labelRtlsAttempts.textContent = "RTLS Attempts:";
+        labelRtlsAttempts.style.color = "white";
+        divRtlsAttempts.append(labelRtlsAttempts);
+
+        let progressRtlsAttempts = document.createElement("progress");
+        progressRtlsAttempts.max = rtls_attempts;
+        progressRtlsAttempts.value = val.rtls_attempts;
+        progressRtlsAttempts.textContent = val.rtls_attempts === 0 ? "No hay datos" : `${val.rtls_attempts}`;
+
+        if (val.rtls_attempts === 0) {
+            progressRtlsAttempts.style.color = "white";
+            progressRtlsAttempts.style.backgroundColor = "red";
+        } else {
+            progressRtlsAttempts.style.color = "white";
+            progressRtlsAttempts.style.backgroundColor = "green";
+        }
+
+        let divRtlsLandings = document.createElement("div");
+        let labelRtlsLandings = document.createElement("label");
+        labelRtlsLandings.textContent = "RTLS Landings:";
+        labelRtlsLandings.style.color = "white";
+        divRtlsLandings.append(labelRtlsLandings);
+
+        let progressRtlsLandings = document.createElement("progress");
+        progressRtlsLandings.max = rtls_landings;
+        progressRtlsLandings.value = val.rtls_landings;
+        progressRtlsLandings.textContent = val.rtls_landings === 0 ? "No hay datos" : `${val.rtls_landings}`;
+
+        if (val.rtls_landings === 0) {
+            progressRtlsLandings.style.color = "white";
+            progressRtlsLandings.style.backgroundColor = "red";
+        } else {
+            progressRtlsLandings.style.color = "white";
+            progressRtlsLandings.style.backgroundColor = "green";
+        }
+
+        let divAsdsAttempts = document.createElement("div");
+        let labelAsdsAttempts = document.createElement("label");
+        labelAsdsAttempts.textContent = "ASDS Attempts:";
+        labelAsdsAttempts.style.color = "white";
+        divAsdsAttempts.append(labelAsdsAttempts);
+
+        let progressAsdsAttempts = document.createElement("progress");
+        progressAsdsAttempts.max = asds_attempts;
+        progressAsdsAttempts.value = val.asds_attempts;
+        progressAsdsAttempts.textContent = val.asds_attempts === 0 ? "No hay datos" : `${val.asds_attempts}`;
+
+        if (val.asds_attempts === 0) {
+            progressAsdsAttempts.style.color = "white";
+            progressAsdsAttempts.style.backgroundColor = "red";
+        } else {
+            progressAsdsAttempts.style.color = "white";
+            progressAsdsAttempts.style.backgroundColor = "green";
+        }
+
+        let divAsdsLandings = document.createElement("div");
+        let labelAsdsLandings = document.createElement("label");
+        labelAsdsLandings.textContent = "ASDS Landings:";
+        labelAsdsLandings.style.color = "white";
+        divAsdsLandings.append(labelAsdsLandings);
+
+        let progressAsdsLandings = document.createElement("progress");
+        progressAsdsLandings.max = asds_landings;
+        progressAsdsLandings.value = val.asds_landings;
+        progressAsdsLandings.textContent = val.asds_landings === 0 ? "No hay datos" : `${val.asds_landings}`;
+
+        if (val.asds_landings === 0) {
+            progressAsdsLandings.style.color = "white";
+            progressAsdsLandings.style.backgroundColor = "red";
+        } else {
+            progressAsdsLandings.style.color = "white";
+            progressAsdsLandings.style.backgroundColor = "green";
+        }
+
+        divInformationContainer.append(divReuseCount);
+        divInformationContainer.append(progressReuseCount);
+        divInformationContainer.append(document.createElement("br"));
+        divInformationContainer.append(divRtlsAttempts);
+        divInformationContainer.append(progressRtlsAttempts);
+        divInformationContainer.append(document.createElement("br"));
+        divInformationContainer.append(divRtlsLandings);
+        divInformationContainer.append(progressRtlsLandings);
+        divInformationContainer.append(document.createElement("br"));
+        divInformationContainer.append(divAsdsAttempts);
+        divInformationContainer.append(progressAsdsAttempts);
+        divInformationContainer.append(document.createElement("br"));
+        divInformationContainer.append(divAsdsLandings);
+        divInformationContainer.append(progressAsdsLandings);
+
         document.querySelector("#information__2").appendChild(divInformationContainer);
     });
 };
