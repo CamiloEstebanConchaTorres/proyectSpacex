@@ -17,6 +17,10 @@ import{
     getCoresStats
 }   from "../modules/cores.js"
 
+import{
+    getDragonMassTotal
+}   from "../modules/dragons.js"
+
 export const progressRocketWeight = async(Rockets)=>{
     let {kg} = await getRocketMassTotal();
     let conterDiv = [];
@@ -475,3 +479,40 @@ export const progressCoresStats = async (Cores) => {
         document.querySelector("#information__2").appendChild(divInformationContainer);
     });
 };
+
+
+///////////////////////////////77 DRAGONS ///////////////////////////////////////////////////////////////77
+
+export const progressDragonWeight = async(Dragons)=>{
+    let kg = await getDragonMassTotal();
+    let conterDiv = [];
+    [Dragons].forEach((val) => {
+        let divInformationContainer = document.createElement("div");
+        divInformationContainer.classList.add("information__container");
+
+        let divFirst = document.createElement("div");
+        let labelFirst = document.createElement("label");
+        labelFirst.textContent = "Dragon weight:";
+
+        let progressFirst = document.createElement("progress");
+        progressFirst.max = kg;
+        progressFirst.value = val.dry_mass_kg;
+        progressFirst.textContent = `${((val.dry_mass_kg / kg) * 100).toFixed(2)}%`;
+
+        let divLast = document.createElement("div");
+        let spanLast = document.createElement("span");
+        let numKg = new Intl.NumberFormat('cop').format(val.dry_mass_kg);
+        let numLb = new Intl.NumberFormat('cop').format(val.dry_mass_lbs);
+        spanLast.innerHTML = `${numKg} kg <br> ${numLb} lb`;
+
+        divFirst.append(labelFirst);
+        divFirst.append(progressFirst);
+        divLast.append(spanLast);
+        divInformationContainer.append(divFirst);
+        divInformationContainer.append(divLast);
+        conterDiv.push(divInformationContainer);
+    });
+
+    let information__2 = document.querySelector("#information__2");
+    information__2.append(...conterDiv);
+}

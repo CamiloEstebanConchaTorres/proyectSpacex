@@ -44,7 +44,8 @@ import {
     progressSecondStageDiameterRocket,
     progressSecondStageHeightRocket,
     progressCapsuleStats,
-    progressCoresStats
+    progressCoresStats,
+    progressDragonWeight
 } from "../modulesComponents/progressBar.js";
 
 import { 
@@ -57,7 +58,12 @@ import{
     getAllCoresId
 }   from "../modules/cores.js"
 
-let rocketsView = "rockets";
+import{
+    getAllDragons,
+    getAllDragonsId
+}   from "../modules/dragons.js"
+
+
 
 const getRocketsId = async(e)=>{
     e.preventDefault();
@@ -362,6 +368,58 @@ export const paginationCores = async(page=1, limit=4)=>{
     console.log(div);
     let [back, a1,a2,a3,a4, next] = div.children
     a2.click();
+    // <div class="buttom__paginacion">
+    //     <a href="#">&laquo;</a> 
+    //     <a href="#" class="activo">1</a>
+    //     <a href="#">2</a>
+    //     <a href="#">3</a>
+    //     <a href="#">4</a>
+    //     <a href="#">&raquo;</a>
+    // </div>
+    return div;
+}
+
+
+
+/////////////////////////////// PAGINATION DRAGONS ////////////////////////////////////////////
+
+const getDragonsId = async(e)=>{
+    e.preventDefault();
+    let a = e.target.parentElement.children;
+    for(let val of a){
+        val.classList.remove('activo');
+    }
+    e.target.classList.add('activo'); 
+    let information__2 = document.querySelector("#information__2");
+    information__2.innerHTML = "";
+    let description__item = document.querySelector("#description__item")
+    description__item.innerHTML = "";
+    let section__image = document.querySelector("#section__image")
+    section__image.innerHTML = "";
+    let section__information__q = document.querySelector("#section__information__q");
+    section__information__q.innerHTML = "";
+    let section__information__w = document.querySelector("#section__information__w");
+    section__information__w.innerHTML = "";
+    
+    let Dragons = await getAllDragonsId(e.target.id);
+    console.log(Dragons)
+    await progressDragonWeight(Dragons)
+}
+export const paginationDragons = async()=>{
+    let Dragons = await getAllDragons();
+    let div = document.createElement("div");
+    div.classList.add("buttom__paginacion")
+  
+    Dragons.forEach((val,id) => {
+        let a = document.createElement("a");
+        a.setAttribute("href","#");
+        a.id = val.id;
+        a.textContent = id+1;
+        a.addEventListener("click", getDragonsId)
+        div.appendChild(a);
+    });
+    let [a1,a2] = div.children
+    a1.click();
     // <div class="buttom__paginacion">
     //     <a href="#">&laquo;</a> 
     //     <a href="#" class="activo">1</a>
