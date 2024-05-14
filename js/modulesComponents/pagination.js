@@ -14,12 +14,13 @@ import {
     informationWebRocket,
     informationCapsuleType,
     informationCapsuleStatus,
-    informationCapsuleLastUpdate,
-    informationCapsuleLaunches,
+    informationCapsuleLastUpdate
 } from "./information.js";
 import { 
     tableRocketColum1, 
-    tableRocketColum2
+    tableRocketColum2,
+    tableCapsulesLaunches,
+    tableCapsulesserial
 } from "./tables.js";
 import { 
     informRocketEngineThrustSeaLevel, 
@@ -218,6 +219,11 @@ const getCapsulesId = async(e)=>{
     let section__information__w = document.querySelector("#section__information__w");
     section__information__w.innerHTML = "";
     
+    let sectionImage = document.querySelector("#section__information__1");
+    let img = document.createElement("img");
+    img.setAttribute("src", "storage/img/CApsula-unscreen.gif");
+    img.classList.add("imagen-paginacion-capsula");
+    sectionImage.appendChild(img);
     
     let Capsules = await getAllCapsulesId(e.target.id);
     console.log(Capsules);
@@ -226,8 +232,8 @@ const getCapsulesId = async(e)=>{
     await informationCapsuleType(Capsules);
     await informationCapsuleStatus(Capsules);
     await informationCapsuleLastUpdate(Capsules);
-    await informationCapsuleLaunches(Capsules);
-
+    await tableCapsulesLaunches(Capsules)
+    await tableCapsulesserial(Capsules)
 
     
 }
@@ -238,8 +244,6 @@ export const paginationCapsules = async(page=1, limit=4)=>{
 
     let div = document.createElement("div");
     div.classList.add("buttom__paginacion")
-
-    
     let start = document.createElement("a");
     start.setAttribute("href","#");
     start.innerHTML = "&laquo";

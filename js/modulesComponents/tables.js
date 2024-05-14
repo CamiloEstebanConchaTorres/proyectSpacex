@@ -148,3 +148,42 @@ export const tableRocketColum2 = async (Rocket)=>{
 
 
 ////////////////////////////////7 TABLAS CAPSULAS ////////////////////////////////////////////////7
+
+export const tableCapsulesLaunches = async (Capsules) => {
+    let information__table__1 = document.querySelector("#information__table__1");
+    information__table__1.innerHTML = "";
+    let h3 = document.createElement("h3");
+    h3.textContent = "Capsule Launches";
+    let hr = document.createElement("hr");
+    let div = document.createElement("div");
+    div.classList.add("table__container__1");
+    let div1 = document.createElement("div");
+    let span1 = document.createElement("span");
+    span1.textContent = "Launches";
+    let strong1 = document.createElement("strong");
+    strong1.textContent = `${Capsules.launches}`;
+    div1.append(span1, strong1);
+    div.append(div1);
+    information__table__1.append(h3, hr, div);
+};
+
+export const tableCapsulesserial = async (Capsules) => {
+    let information__table__1 = document.querySelector("#information__table__2");
+    information__table__1.innerHTML = "";
+    let h3 = document.createElement("h3");
+    h3.textContent = "Capsule Serial";
+    let hr = document.createElement("hr");
+    let div = document.createElement("div");
+    div.classList.add("table__container__1");
+    let div1 = document.createElement("div");
+    let span1 = document.createElement("span");
+    span1.textContent = "Serial";
+    let strong1 = document.createElement("strong");
+    strong1.textContent = `${Capsules.serial}`;
+    div1.append(span1, strong1);
+    div.append(div1);
+    information__table__1.append(h3, hr, div);
+};
+
+
+

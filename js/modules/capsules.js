@@ -71,3 +71,26 @@ export const getCapsuleData = async () => {
 
     return { last_update, launches, status, type };
 };
+
+export const getCapsuleLaunchAndSerial = async () => {
+    let config = {
+        headers: {
+            "content-type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({
+            "options": {
+                "select": {
+                    "launches": 1,
+                    "serial": 1
+                },
+                "limit": 1
+            }
+        })
+    };
+
+    let res = await fetch("https://api.spacexdata.com/v4/capsules/query", config);
+    let { docs: [{ launches, serial }] = [] } = await res.json();
+
+    return { launches, serial };
+};

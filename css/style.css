@@ -572,3 +572,8 @@ progress[value]::-moz-progress-bar {
 
 
 
+.imagen-paginacion-capsula{
+    position: absolute;
+    width: 80%;
+}
+
