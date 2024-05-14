@@ -45,29 +45,3 @@ capsules.addEventListener("click", async(e)=>{
 
 rocket.click();
 
-
-  
-  // Función para mostrar la información de las cápsulas en la página
-  const displayCapsulesInfo = async () => {
-    try {
-      // Obtener los datos de las cápsulas
-      const capsulesData = await getCapsulesData();
-  
-      // Verificar si se obtuvieron los datos correctamente
-      if (!capsulesData) {
-        console.error("No se pudieron obtener los datos de las cápsulas");
-        return;
-      }
-  
-      // Iterar sobre los datos de las cápsulas y mostrar la información
-      capsulesData.forEach(capsule => {
-        // Aquí puedes agregar tu lógica para mostrar la información de cada cápsula en la página
-        console.log(capsule);
-      });
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
-  };
-  
-  // Llamar a la función para mostrar la información de las cápsulas
-  displayCapsulesInfo();

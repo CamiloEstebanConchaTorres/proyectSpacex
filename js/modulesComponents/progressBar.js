@@ -10,8 +10,8 @@ import {
 } from "../modules/rockets.js";
 
 import{
-    getCapsuleTotalMass
-} from "../modules/capsules.js"
+    getCapsuleStats
+}   from "../modules/capsules.js"
 
 export const progressRocketWeight = async(Rockets)=>{
     let {kg} = await getRocketMassTotal();
@@ -263,44 +263,81 @@ export const progressSecondStageHeightRocket = async(Rockets)=>{
 
 /////////////////// PROGRES BAR CAPSULAS //////////////////////////////////////////////////////////
 
-export const progressCapsuleWeight = async (Capsules) => {
-    // Verificar si Capsules es un array
-    if (typeof Capsules !== 'object' || !Array.isArray(Capsules)) {
-        console.error("Capsules is not an array");
-        return;
-    }
+export const progressCapsuleStats = async (Capsules) => {
+    let { reuse_count, water_landings, land_landings } = await getCapsuleStats();
 
-    let totalMass = await getCapsuleTotalMass();
-    let counterDiv = [];
-
-    Capsules.forEach((capsule) => {
+    [Capsules].forEach((val) => {
         let divInformationContainer = document.createElement("div");
-        divInformationContainer.classList.add("information__container");
-
-        let divFirst = document.createElement("div");
-        let labelFirst = document.createElement("label");
-        labelFirst.textContent = "Capsule weight:";
-
-        let ProgressFirst = document.createElement("progress");
-        ProgressFirst.max = totalMass;
-        ProgressFirst.value = `${capsule.dry_mass_kg || 0}`;
-        ProgressFirst.textContent = `${capsule.dry_mass_kg || 0}%`;
-
-        let divLast = document.createElement("div");
-        let spanLast = document.createElement("span");
-
-        let numKg = new Intl.NumberFormat('en').format(capsule.dry_mass_kg || 0);
-        let numLb = new Intl.NumberFormat('en').format(capsule.dry_mass_lb || 0);
-        spanLast.innerHTML = `${numKg} kg <br> ${numLb} lb`;
-
-        divFirst.append(labelFirst);
-        divFirst.append(ProgressFirst);
-        divLast.append(spanLast);
-        divInformationContainer.append(divFirst);
-        divInformationContainer.append(divLast);
-        counterDiv.push(divInformationContainer);
+        divInformationContainer.style.textAlign = "center";
+        divInformationContainer.style.fontSize = "16px";
+        divInformationContainer.style.marginBottom = "15px";
+        let divReuseCount = document.createElement("div");
+        let labelReuseCount = document.createElement("label");
+        labelReuseCount.textContent = "Reuse Count:";
+        labelReuseCount.style.color = "white";
+        divReuseCount.append(labelReuseCount);
+        let progressReuseCount = document.createElement("progress");
+        progressReuseCount.max = reuse_count;
+        progressReuseCount.value = val.reuse_count;
+        progressReuseCount.textContent = `${val.reuse_count}`;
+        if (val.reuse_count === 0 || val.reuse_count === 1) {
+            progressReuseCount.style.color = "white";
+            progressReuseCount.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+        } else if (val.reuse_count === 2) {
+            progressReuseCount.style.color = "white";
+            progressReuseCount.style.backgroundColor = "yellow";
+        } else {
+            progressReuseCount.style.color = "white";
+            progressReuseCount.style.backgroundColor = "green";
+        }
+        let divWaterLandings = document.createElement("div");
+        let labelWaterLandings = document.createElement("label");
+        labelWaterLandings.textContent = "Water Landings:";
+        labelWaterLandings.style.color = "white";
+        divWaterLandings.append(labelWaterLandings);
+        let progressWaterLandings = document.createElement("progress");
+        progressWaterLandings.max = 3;
+        progressWaterLandings.value = val.water_landings;
+        if (val.water_landings === 3) {
+            progressWaterLandings.textContent = "Complete";
+            progressWaterLandings.style.backgroundColor = "green";
+        } else if (val.water_landings === 2) {
+            progressWaterLandings.textContent = "Half";
+            progressWaterLandings.style.backgroundColor = "yellow";
+        } else if (val.water_landings === 1) {
+            progressWaterLandings.textContent = "Some";
+            progressWaterLandings.style.backgroundColor = "red";
+        } else {
+            progressWaterLandings.textContent = "None";
+            progressWaterLandings.style.backgroundColor = "red";
+        }
+        let divLandLandings = document.createElement("div");
+        let labelLandLandings = document.createElement("label");
+        labelLandLandings.textContent = "Land Landings:";
+        labelLandLandings.style.color = "white";
+        divLandLandings.append(labelLandLandings);
+        let progressLandLandings = document.createElement("progress");
+        progressLandLandings.max = land_landings;
+        progressLandLandings.value = val.land_landings;
+        progressLandLandings.textContent = `${val.land_landings}`;
+        if (val.land_landings === 0 || val.land_landings === 1) {
+            progressLandLandings.style.color = "white";
+            progressLandLandings.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+        } else if (val.land_landings === 2) {
+            progressLandLandings.style.color = "white";
+            progressLandLandings.style.backgroundColor = "yellow";
+        } else {
+            progressLandLandings.style.color = "white";
+            progressLandLandings.style.backgroundColor = "green";
+        }
+        divInformationContainer.append(divReuseCount);
+        divInformationContainer.append(progressReuseCount);
+        divInformationContainer.append(document.createElement("br"));
+        divInformationContainer.append(divWaterLandings);
+        divInformationContainer.append(progressWaterLandings);
+        divInformationContainer.append(document.createElement("br"));
+        divInformationContainer.append(divLandLandings);
+        divInformationContainer.append(progressLandLandings);
+        document.querySelector("#information__2").appendChild(divInformationContainer);
     });
-
-    let information__2 = document.querySelector("#information__2");
-    information__2.append(...counterDiv);
 };
