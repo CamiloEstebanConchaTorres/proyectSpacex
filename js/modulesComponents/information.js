@@ -121,3 +121,68 @@ export const informationWebRocket = async(wikipedia)=>{
 
 
 /////////////////////////// INFORMATION CAPSULES ////////////////////////////////////////////
+
+export const informationCapsuleType = async ({type}) => {
+  let div = document.createElement('div');
+  div.classList.add('description__container');
+  let divFirst = document.createElement('div');
+  let img = document.createElement('img');
+  img.setAttribute("src", "storage/img/icons/mech.svg");
+  divFirst.append(img);
+  let divLast = document.createElement('div');
+  let h3 = document.createElement('h3');
+  h3.textContent = "Type: " + type;
+  divLast.append(h3);
+  div.append(divFirst, divLast);
+  let description__item = document.querySelector("#description__item");
+  description__item.append(div);
+};
+
+export const informationCapsuleStatus = async ({status}) => {
+  let div = document.createElement('div');
+  div.classList.add('description__container');
+  let divFirst = document.createElement('div');
+  let img = document.createElement('img');
+  img.setAttribute("src", "storage/img/icons/mech.svg");
+  divFirst.append(img);
+  let divLast = document.createElement('div');
+  let h3 = document.createElement('h3');
+  h3.textContent = "Status: " + status;
+  divLast.append(h3);
+  div.append(divFirst, divLast);
+  let description__item = document.querySelector("#description__item");
+  description__item.append(div);
+};
+
+export const informationCapsuleLastUpdate = async ({last_update}) => {
+  let div = document.createElement('div');
+  div.classList.add('description__container');
+  let divFirst = document.createElement('div');
+  let img = document.createElement('img');
+  img.setAttribute("src", "storage/img/icons/mech.svg");
+  divFirst.append(img);
+  let divLast = document.createElement('div');
+  let h3 = document.createElement('h3');
+  h3.textContent = "Last Update: " + last_update;
+  divLast.append(h3);
+  div.append(divFirst, divLast);
+  let description__item = document.querySelector("#description__item");
+  description__item.append(div);
+};
+
+export const informationCapsuleLaunches = async ({launches}) => {
+  let div = document.createElement('div');
+  div.classList.add('description__container');
+  let divFirst = document.createElement('div');
+  let img = document.createElement('img');
+  img.setAttribute("src", "storage/img/icons/mech.svg");
+  divFirst.append(img);
+  let divLast = document.createElement('div');
+  let h3 = document.createElement('h3');
+  h3.textContent = "ID -> Launches: " + launches; 
+  divLast.append(h3);
+  div.append(divFirst, divLast);
+  let description__item = document.querySelector("#description__item");
+  description__item.append(div);
+};
+

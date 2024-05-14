@@ -41,9 +41,33 @@ export const getCapsuleStats = async () => {
         })
     };
 
-    // Obtener datos de las cápsulas
     let res = await fetch("https://api.spacexdata.com/v4/capsules/query", config);
     let { docs: [{ reuse_count, water_landings, land_landings }] = [] } = await res.json();
 
     return { reuse_count, water_landings, land_landings };
+};
+
+export const getCapsuleData = async () => {
+    let config = {
+        headers: {
+            "content-type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({
+            "options": {
+                "select": {
+                    "last_update": 1,
+                    "launches": 1,
+                    "status": 1,
+                    "type": 1
+                },
+                "limit": 1
+            }
+        })
+    };
+
+    let res = await fetch("https://api.spacexdata.com/v4/capsules/query", config);
+    let { docs: [{ last_update, launches, status, type }] = [] } = await res.json();
+
+    return { last_update, launches, status, type };
 };

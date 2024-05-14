@@ -12,6 +12,10 @@ import {
     informationLaunchCostRocket,
     informationFirstFlightRocket,
     informationWebRocket,
+    informationCapsuleType,
+    informationCapsuleStatus,
+    informationCapsuleLastUpdate,
+    informationCapsuleLaunches,
 } from "./information.js";
 import { 
     tableRocketColum1, 
@@ -219,6 +223,10 @@ const getCapsulesId = async(e)=>{
     console.log(Capsules);
     await nameCapsules(Capsules.serial);
     await progressCapsuleStats(Capsules);
+    await informationCapsuleType(Capsules);
+    await informationCapsuleStatus(Capsules);
+    await informationCapsuleLastUpdate(Capsules);
+    await informationCapsuleLaunches(Capsules);
 
 
     
