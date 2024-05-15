@@ -23,7 +23,9 @@ import {
     informationDragons,
     informationLaunchCostDragons,
     informationFirstFlightDragons,
-    informationWebDragons
+    informationWebDragons,
+    informationFirstFlightCrews,
+    informationWebCrew
 } from "./information.js";
 import { 
     tableRocketColum1, 
@@ -44,7 +46,8 @@ import {
 } from "./inform.js";
 import { 
     imageRockets,
-    imageDragons
+    imageDragons,
+    imageCrews
 } from "./card.js";
 import { 
     progressRocketWeight,
@@ -488,7 +491,9 @@ const getCrewsId = async(e)=>{
     let Crew = await getAllCrewsId(e.target.id);
     console.log(Crew);
     await nameCrews(Crew.name)
-
+    await imageCrews([Crew])
+    await informationFirstFlightCrews(Crew)
+    await informationWebCrew(Crew)
     
 }
 

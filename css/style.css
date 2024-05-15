@@ -11,7 +11,7 @@
 body {
     background: linear-gradient(var(--color--one), var(--color--one--rgba));
     background: #353756;
-    background-image: url(../storage/img/IrF.gif);
+    background-image: url(../storage/img/p.gif);
     background-repeat: no-repeat;
     background-size: cover;
   
@@ -577,3 +577,7 @@ progress[value]::-moz-progress-bar {
     width: 80%;
 }
 
+.last-image{
+    max-width: 100%;
+    height: 35vh;
+}

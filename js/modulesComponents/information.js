@@ -315,3 +315,71 @@ export const informationWebDragons = async({wikipedia})=>{
   let description__item = document.querySelector("#description__item")
   description__item.append(div)
 }
+
+
+///////////////////////////////////// CREWS //////////////////////////////////////////////////////////7
+
+export const informationFirstFlightCrews = async({agency})=>{
+  let div = document.createElement('div');
+  div.classList.add('description__container');
+  div.style.fontSize = "24px"; // Aumenta el tamaño de fuente del contenedor
+
+  let divFirst = document.createElement('div');
+  let img = document.createElement('img');
+  img.setAttribute("src", "storage/img/icons/mech.svg");
+  divFirst.append(img);
+  
+  let divLast = document.createElement('div');
+  let h3 = document.createElement('h3');
+  h3.style.color = "red";
+  h3.style.fontSize = "32px"; // Aumenta el tamaño de fuente del título
+  h3.textContent = "Information Agency";
+  let small = document.createElement('small');
+  small.style.fontSize = "24px"; // Aumenta el tamaño de fuente del texto
+  small.textContent = agency;
+  divLast.append(h3, small);
+  div.append(divFirst, divLast);
+
+  let description__item = document.querySelector("#description__item");
+  description__item.append(div);
+}
+
+export const informationWebCrew = async ({ wikipedia }) => {
+  let div = document.createElement('div');
+  div.classList.add('description__container');
+  div.style.fontSize = "24px"; // Aumenta el tamaño de fuente del contenedor
+  div.style.display = "flex"; // Cambia el diseño a flexbox
+  div.style.flexDirection = "column"; // Cambia la dirección a columna
+
+  let divRow = document.createElement('div');
+  divRow.style.display = "flex"; // Cambia el diseño a flexbox
+  divRow.style.alignItems = "center"; // Centra los elementos horizontalmente
+
+  let divFirst = document.createElement('div');
+  let img = document.createElement('img');
+  img.setAttribute("src", "storage/img/icons/mech.svg");
+  divFirst.append(img);
+
+  let divLast = document.createElement('div');
+  let h3 = document.createElement('h3');
+  h3.style.color = "red";
+  h3.style.fontSize = "32px"; // Aumenta el tamaño de fuente del título
+  h3.textContent = "Read more about this Crew";
+  let a = document.createElement('a');
+  a.setAttribute("href", wikipedia);
+  a.setAttribute("target", "_blank");
+  a.style.color = "blue"; // Establece el color del enlace a azul
+  a.style.fontSize = "24px"; // Aumenta el tamaño de fuente del enlace
+  a.textContent = "Wikipedia";
+  divLast.append(h3, a);
+
+  let newImg = document.createElement('img');
+  newImg.setAttribute("src", "storage/img/giphy.gif"); // Reemplaza "ruta/de/la/imagen.jpg" con la ruta de tu imagen
+  newImg.classList.add('last-image'); // Agrega la clase 'last-image' a la última imagen
+
+  divRow.append(divFirst, divLast);
+  div.append(divRow, newImg);
+
+  let description__item = document.querySelector("#description__item");
+  description__item.append(div);
+}
