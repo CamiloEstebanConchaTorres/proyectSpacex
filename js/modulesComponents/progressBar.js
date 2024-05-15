@@ -584,3 +584,6 @@ export const progressSecondStageDiameterDragonimage = () => {
 
     information2.append(img);
 }
+
+/////////////////////////// LANPADS /////////////////////////////////////////////////////////777
+
