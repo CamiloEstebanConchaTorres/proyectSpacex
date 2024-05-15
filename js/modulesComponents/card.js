@@ -134,3 +134,36 @@ export const imageLandpads = async (landpadData) => {
         section__image.append(div);
     });
 };
+
+/////////////////////7 SHIPS ////////////////////////////////
+
+export const imageShips = async (shipData) => {
+    shipData.forEach(ship => {
+        let div = document.createElement("div");
+        div.classList.add("carousel__item");
+
+        let img = document.createElement("img");
+        img.setAttribute("src", ship.image); // Acceder a la imagen de la nave
+        img.setAttribute("alt", ship.name); // Asociar el nombre como atributo alt para accesibilidad
+        img.setAttribute("referrerpolicy", "no-referrer");
+
+        // Establecer el tamaño de la imagen
+        img.setAttribute("style", "width: 80vh; height: auto;"); // Ejemplo de tamaño (ajusta según lo necesites)
+
+        // Centrar la imagen
+        img.onload = function() {
+            let imgWidth = this.width;
+            let imgHeight = this.height;
+            let containerWidth = section__image.offsetWidth;
+            let containerHeight = section__image.offsetHeight;
+            let marginLeft = (containerWidth - imgWidth) / 2;
+            let marginTop = (containerHeight - imgHeight) / 2;
+
+            this.style.marginLeft = marginLeft + "px";
+            this.style.marginTop = marginTop + "px";
+        };
+
+        div.append(img);
+        section__image.append(div);
+    });
+};

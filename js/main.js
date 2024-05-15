@@ -5,7 +5,8 @@ import {
     paginationCores,
     paginationDragons,
     paginationCrews,
-    paginationLand
+    paginationLand,
+    paginationShips
 } from "./modulesComponents/pagination.js";
 
 let footerSelect = async(e, id)=>{
@@ -67,6 +68,14 @@ Land.addEventListener("click", async(e)=>{
     let paginacion = document.querySelector("#paginacion");
     paginacion.innerHTML = ""
     paginacion.append(await paginationLand())
+})
+
+let Ships = document.querySelector("#Ships-link")
+Ships.addEventListener("click", async(e)=>{
+    await footerSelect(e, Ships)
+    let paginacion = document.querySelector("#paginacion");
+    paginacion.innerHTML = ""
+    paginacion.append(await paginationShips())
 })
 
 

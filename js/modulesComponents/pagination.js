@@ -9,7 +9,8 @@ import {
     nameCores,
     nameDragons,
     nameCrews,
-    nameLand
+    nameLand,
+    nameShips
 } from "./title.js";
 import { 
     informationRockets,
@@ -32,7 +33,9 @@ import {
     informationFirstFlightlandstatustype,
     informationFirstFlightlandstatustypelocalityre,
     informationFirstFlightlandstatustypelocality,
-    informationFirstFlightlandstatustypelocalityredet
+    informationFirstFlightlandstatustypelocalityredet,
+    informationFirstFlightlandstatustypelocalityredetship,
+    informationFirstFlightlandstatustypelocalityredetshipt
 } from "./information.js";
 import { 
     tableRocketColum1, 
@@ -49,14 +52,15 @@ import {
     informRocketEngineThrustVacuum,
     informRocketData,
     informDragonLaunchPayloadMass,
-    informDragonData
-
+    informDragonData,
+    createCenteredImage
 } from "./inform.js";
 import { 
     imageRockets,
     imageDragons,
     imageCrews,
-    imageLandpads
+    imageLandpads,
+    imageShips
 } from "./card.js";
 import { 
     progressRocketWeight,
@@ -98,6 +102,11 @@ import{
     getAllLandId,
     getAllLand
 }   from "../modules/Landpads.js" 
+
+import{
+    getAllShipsId,
+    getAllShips
+}   from "../modules/ships.js"
 
 const getRocketsId = async(e)=>{
     e.preventDefault();
@@ -591,6 +600,7 @@ const getLandId = async(e)=>{
     await informationFirstFlightlandstatustypelocality(Land)
     await informationFirstFlightlandstatustypelocalityredet(Land)
     await tableCoresLaunchesland(Land)
+    await createCenteredImage(Land)
 }
 
 export const paginationLand = async(page=1, limit=4)=>{  
@@ -623,6 +633,59 @@ export const paginationLand = async(page=1, limit=4)=>{
     console.log(div);
     let [back, a1,a2,a3,a4, next] = div.children
     a2.click();
+    // <div class="buttom__paginacion">
+    //     <a href="#">&laquo;</a> 
+    //     <a href="#" class="activo">1</a>
+    //     <a href="#">2</a>
+    //     <a href="#">3</a>
+    //     <a href="#">4</a>
+    //     <a href="#">&raquo;</a>
+    // </div>
+    return div;
+}
+
+//////////////////////////////// SHIPS /////////////////////////77
+
+const getShipsId = async(e)=>{
+    e.preventDefault();
+    let a = e.target.parentElement.children;
+    for(let val of a){
+        val.classList.remove('activo');
+    }
+    e.target.classList.add('activo'); 
+    let information__2 = document.querySelector("#information__2");
+    information__2.innerHTML = "";
+    let description__item = document.querySelector("#description__item")
+    description__item.innerHTML = "";
+    let section__image = document.querySelector("#section__image")
+    section__image.innerHTML = "";
+    let section__information__q = document.querySelector("#section__information__q");
+    section__information__q.innerHTML = "";
+    let section__information__w = document.querySelector("#section__information__w");
+    section__information__w.innerHTML = "";
+    
+    let Ships = await getAllShipsId(e.target.id);
+    console.log(Ships)
+    await nameShips(Ships);
+    await imageShips([Ships])
+    await informationFirstFlightlandstatustypelocalityredetship(Ships)
+    await informationFirstFlightlandstatustypelocalityredetshipt(Ships)
+}
+export const paginationShips = async()=>{
+    let Ships = await getAllShips();
+    let div = document.createElement("div");
+    div.classList.add("buttom__paginacion")
+  
+    Ships.forEach((val,id) => {
+        let a = document.createElement("a");
+        a.setAttribute("href","#");
+        a.id = val.id;
+        a.textContent = id+1;
+        a.addEventListener("click", getShipsId)
+        div.appendChild(a);
+    });
+    let [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28]  = div.children
+    a1.click();
     // <div class="buttom__paginacion">
     //     <a href="#">&laquo;</a> 
     //     <a href="#" class="activo">1</a>

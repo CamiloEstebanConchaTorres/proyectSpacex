@@ -546,3 +546,58 @@ export const informationFirstFlightlandstatustypelocalityredet = async({details}
   let description__item = document.querySelector("#information__2");
   description__item.append(div);
 }
+
+////////////////////////////// SHIPS //////////////////////////////////////////////////////////
+
+export const informationFirstFlightlandstatustypelocalityredetship = async({legacy_id})=>{
+  let div = document.createElement('div');
+  div.classList.add('description__container');
+  div.style.width = "90%"; // Ajusta el ancho del div principal al 20%
+  div.style.fontSize = "24px"; // Aumenta el tamaño de fuente del contenedor
+
+  let divFirst = document.createElement('div');
+  let img = document.createElement('img');
+  img.setAttribute("src", "storage/img/icons/mech.svg");
+  divFirst.append(img);
+  
+  let divLast = document.createElement('div');
+  let h3 = document.createElement('h3');
+  h3.style.color = "red";
+  h3.style.fontSize = "20px"; // Aumenta el tamaño de fuente del título
+  h3.textContent = "Legacy ID";
+  let small = document.createElement('small');
+  small.style.fontSize = "16px"; // Aumenta el tamaño de fuente del texto
+  small.textContent = legacy_id;
+  divLast.append(h3, small);
+  div.append(divFirst, divLast);
+
+  let description__item = document.querySelector("#information__2");
+  description__item.append(div);
+}
+
+
+export const informationFirstFlightlandstatustypelocalityredetshipt = async({type})=>{
+  let div = document.createElement('div');
+  div.classList.add('description__container');
+  div.style.width = "90%"; // Ajusta el ancho del div principal al 20%
+  div.style.fontSize = "24px"; // Aumenta el tamaño de fuente del contenedor
+
+  let divFirst = document.createElement('div');
+  let img = document.createElement('img');
+  img.setAttribute("src", "storage/img/icons/mech.svg");
+  divFirst.append(img);
+  
+  let divLast = document.createElement('div');
+  let h3 = document.createElement('h3');
+  h3.style.color = "red";
+  h3.style.fontSize = "20px"; // Aumenta el tamaño de fuente del título
+  h3.textContent = "Type";
+  let small = document.createElement('small');
+  small.style.fontSize = "16px"; // Aumenta el tamaño de fuente del texto
+  small.textContent = type;
+  divLast.append(h3, small);
+  div.append(divFirst, divLast);
+
+  let description__item = document.querySelector("#information__2");
+  description__item.append(div);
+}
