@@ -27,3 +27,13 @@ export const nameCores = async (serial) => {
     header__title.style.fontFamily = "Brush Script MT";
     header__title.style.color = "#82cfff";
 };
+
+/////////////// TITULOS DRAGONS /////////////////////////////////////////
+
+export const nameDragons = async (name) => {
+    let header__title = document.querySelector("#header__title");
+    header__title.innerHTML = "";
+    header__title.textContent = name;
+    header__title.style.fontFamily = "Brush Script MT";
+    header__title.style.color = "#82cfff";
+};

@@ -6,7 +6,8 @@ import {
 import { 
     nameRockets,
     nameCapsules,
-    nameCores
+    nameCores,
+    nameDragons
 } from "./title.js";
 import { 
     informationRockets,
@@ -25,16 +26,20 @@ import {
     tableCapsulesLaunches,
     tableCapsulesserial,
     tableCoresLaunches,
-    tableCoreLaunchesid
+    tableCoreLaunchesid,
+    tableDragonColumn1
 } from "./tables.js";
 import { 
     informRocketEngineThrustSeaLevel, 
     informRocketEngineThrustVacuum,
-    informRocketData
+    informRocketData,
+    informDragonLaunchPayloadMass,
+    informDragonData
 
 } from "./inform.js";
 import { 
     imageRockets,
+    imageDragons
 } from "./card.js";
 import { 
     progressRocketWeight,
@@ -45,7 +50,10 @@ import {
     progressSecondStageHeightRocket,
     progressCapsuleStats,
     progressCoresStats,
-    progressDragonWeight
+    progressDragonWeight,
+    progressHeightDragon,
+    progressDiameterDragon,
+    progressSecondStageDiameterDragon
 } from "../modulesComponents/progressBar.js";
 
 import { 
@@ -403,7 +411,15 @@ const getDragonsId = async(e)=>{
     
     let Dragons = await getAllDragonsId(e.target.id);
     console.log(Dragons)
-    await progressDragonWeight(Dragons)
+    await progressDragonWeight(Dragons);
+    await progressHeightDragon(Dragons);
+    await progressDiameterDragon(Dragons);
+    await progressSecondStageDiameterDragon(Dragons)
+    await imageDragons(Dragons.flickr_images)
+    await nameDragons(Dragons.name)
+    await informDragonLaunchPayloadMass(Dragons.launch_payload_mass)
+    await informDragonData();
+    await tableDragonColumn1(Dragons)
 }
 export const paginationDragons = async()=>{
     let Dragons = await getAllDragons();
@@ -419,7 +435,7 @@ export const paginationDragons = async()=>{
         div.appendChild(a);
     });
     let [a1,a2] = div.children
-    a1.click();
+    a2.click();
     // <div class="buttom__paginacion">
     //     <a href="#">&laquo;</a> 
     //     <a href="#" class="activo">1</a>
