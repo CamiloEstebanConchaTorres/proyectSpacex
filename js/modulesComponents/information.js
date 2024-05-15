@@ -167,9 +167,8 @@ export const informationCapsuleLastUpdate = async ({last_update}) => {
   let div = document.createElement('div');
   div.classList.add('description__container');
   let divFirst = document.createElement('div');
-  let img = document.createElement('img');
-  img.setAttribute("src", "storage/img/icons/mech.svg");
-  divFirst.append(img);
+  div.style.display = "flex"; // Cambia el diseño a flexbox
+  div.style.flexDirection = "column";
   let divLast = document.createElement('div');
   let h3 = document.createElement('h3');
   h3.textContent = "Last Update";
@@ -179,6 +178,10 @@ export const informationCapsuleLastUpdate = async ({last_update}) => {
   lastUpdateText.style.color = "white";
   divLast.append(h3, lastUpdateText);
   div.append(divFirst, divLast);
+  let newImg = document.createElement('img');
+  newImg.setAttribute("src", "storage/img/giphy-unscreen.gif"); // Reemplaza "ruta/de/la/imagen.jpg" con la ruta de tu imagen
+  newImg.classList.add('last-image'); // Agrega la clase 'last-image' a la última imagen
+  div.append(newImg)
   let description__item = document.querySelector("#description__item");
   description__item.append(div);
 };
@@ -211,8 +214,8 @@ export const informationCoreLastUpdate = async ({last_update}) => {
   div.classList.add('description__container');
   let divFirst = document.createElement('div');
   let img = document.createElement('img');
-  img.setAttribute("src", "storage/img/icons/mech.svg");
-  divFirst.append(img);
+  div.style.display = "flex"; // Cambia el diseño a flexbox
+  div.style.flexDirection = "column";
   let divLast = document.createElement('div');
   let h3 = document.createElement('h3');
   h3.textContent = "Last Update";
@@ -222,6 +225,10 @@ export const informationCoreLastUpdate = async ({last_update}) => {
   lastUpdateText.style.color = "white";
   divLast.append(h3, lastUpdateText);
   div.append(divFirst, divLast);
+  let newImg = document.createElement('img');
+  newImg.setAttribute("src", "storage/img/giphy-unscreen.gif"); // Reemplaza "ruta/de/la/imagen.jpg" con la ruta de tu imagen
+  newImg.classList.add('last-image'); // Agrega la clase 'last-image' a la última imagen
+  div.append(newImg)
   let description__item = document.querySelector("#description__item");
   description__item.append(div);
 };
@@ -353,7 +360,7 @@ export const informationWebCrew = async ({ wikipedia }) => {
 
   let divRow = document.createElement('div');
   divRow.style.display = "flex"; // Cambia el diseño a flexbox
-  divRow.style.alignItems = "center"; // Centra los elementos horizontalmente
+
 
   let divFirst = document.createElement('div');
   let img = document.createElement('img');
@@ -363,7 +370,7 @@ export const informationWebCrew = async ({ wikipedia }) => {
   let divLast = document.createElement('div');
   let h3 = document.createElement('h3');
   h3.style.color = "red";
-  h3.style.fontSize = "32px"; // Aumenta el tamaño de fuente del título
+  h3.style.fontSize = "25px"; // Aumenta el tamaño de fuente del título
   h3.textContent = "Read more about this Crew";
   let a = document.createElement('a');
   a.setAttribute("href", wikipedia);
@@ -374,7 +381,7 @@ export const informationWebCrew = async ({ wikipedia }) => {
   divLast.append(h3, a);
 
   let newImg = document.createElement('img');
-  newImg.setAttribute("src", "storage/img/giphy.gif"); // Reemplaza "ruta/de/la/imagen.jpg" con la ruta de tu imagen
+  newImg.setAttribute("src", "storage/img/giphy-unscreen.gif"); // Reemplaza "ruta/de/la/imagen.jpg" con la ruta de tu imagen
   newImg.classList.add('last-image'); // Agrega la clase 'last-image' a la última imagen
 
   divRow.append(divFirst, divLast);

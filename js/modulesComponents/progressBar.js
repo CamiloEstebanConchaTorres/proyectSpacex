@@ -567,3 +567,20 @@ export const progressSecondStageDiameterDragon = async(Dragons) => {
     let information__2 = document.querySelector("#information__2");
     information__2.append(...conterDiv);
 }
+
+/////////// Crews ///////////////////////////////////////////7
+
+export const progressSecondStageDiameterDragonimage = () => {
+    let information2 = document.querySelector("#information__2");
+    information2.innerHTML = "";
+
+    let img = document.createElement("img");
+    img.src = "storage/img/planeta-11.gif";
+    img.alt = "Imagen de reemplazo";
+    
+    // Agregar estilos para hacer la imagen más grande
+    img.style.width = "80%"; // Puedes ajustar el valor para cambiar el tamaño
+    img.style.height = "auto"; // Esto mantendrá la proporción original de la imagen
+
+    information2.append(img);
+}

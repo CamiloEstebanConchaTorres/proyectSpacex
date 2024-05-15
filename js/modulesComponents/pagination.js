@@ -61,7 +61,8 @@ import {
     progressDragonWeight,
     progressHeightDragon,
     progressDiameterDragon,
-    progressSecondStageDiameterDragon
+    progressSecondStageDiameterDragon,
+    progressSecondStageDiameterDragonimage
 } from "../modulesComponents/progressBar.js";
 
 import { 
@@ -494,7 +495,7 @@ const getCrewsId = async(e)=>{
     await imageCrews([Crew])
     await informationFirstFlightCrews(Crew)
     await informationWebCrew(Crew)
-    
+    await progressSecondStageDiameterDragonimage(Crew)   
 }
 
 export const paginationCrews = async(page=1, limit=4)=>{  
