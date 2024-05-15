@@ -153,14 +153,18 @@ export const tableCapsulesLaunches = async (Capsules) => {
     let information__table__1 = document.querySelector("#information__table__1");
     information__table__1.innerHTML = "";
     let h3 = document.createElement("h3");
+    h3.style.fontSize = "32px"; // Aumenta el tamaño de fuente del título a 32 píxeles
+    h3.style.color = "red";
     h3.textContent = "Capsule Launches";
     let hr = document.createElement("hr");
     let div = document.createElement("div");
     div.classList.add("table__container__1");
     let div1 = document.createElement("div");
     let span1 = document.createElement("span");
+    span1.style.fontSize = "24px"; // Aumenta el tamaño de fuente del texto a 24 píxeles
     span1.textContent = "Launches";
     let strong1 = document.createElement("strong");
+    strong1.style.fontSize = "24px"; // Aumenta el tamaño de fuente del texto a 24 píxeles
     strong1.textContent = `${Capsules.launches}`;
     div1.append(span1, strong1);
     div.append(div1);
@@ -171,20 +175,23 @@ export const tableCapsulesserial = async (Capsules) => {
     let information__table__1 = document.querySelector("#information__table__2");
     information__table__1.innerHTML = "";
     let h3 = document.createElement("h3");
+    h3.style.fontSize = "32px"; // Aumenta el tamaño de fuente del título a 32 píxeles
+    h3.style.color = "red";
     h3.textContent = "Capsule Serial";
     let hr = document.createElement("hr");
     let div = document.createElement("div");
     div.classList.add("table__container__1");
     let div1 = document.createElement("div");
     let span1 = document.createElement("span");
+    span1.style.fontSize = "24px"; // Aumenta el tamaño de fuente del texto a 24 píxeles
     span1.textContent = "Serial";
     let strong1 = document.createElement("strong");
+    strong1.style.fontSize = "24px"; // Aumenta el tamaño de fuente del texto a 24 píxeles
     strong1.textContent = `${Capsules.serial}`;
     div1.append(span1, strong1);
     div.append(div1);
     information__table__1.append(h3, hr, div);
 };
-
 
 ////////////////////////////////////7 CORES //////////////////////////////////////////////////////////
 
@@ -192,14 +199,20 @@ export const tableCoresLaunches = async (Cores) => {
     let information__table__1 = document.querySelector("#information__table__1");
     information__table__1.innerHTML = "";
     let h3 = document.createElement("h3");
+    h3.style.fontSize = "32px"; // Aumenta el tamaño de fuente del título a 32 píxeles
+    h3.style.color = "red";
     h3.textContent = "Capsule Launches";
     let hr = document.createElement("hr");
     let div = document.createElement("div");
     div.classList.add("table__container__1");
     let div1 = document.createElement("div");
     let span1 = document.createElement("span");
+    span1.style.fontSize = "24px"; // Aumenta el tamaño de fuente del texto a 24 píxeles
+    span1.style.color = "blue";
     span1.textContent = "N° Block";
     let strong1 = document.createElement("strong");
+    strong1.style.fontSize = "24px"; // Aumenta el tamaño de fuente del texto a 24 píxeles
+    strong1.style.color = "green";
     strong1.textContent = `${Cores.block}`;
     div1.append(span1, strong1);
     div.append(div1);
@@ -211,20 +224,23 @@ export const tableCoreLaunchesid = async (Cores) => {
     let information__table__1 = document.querySelector("#information__table__2");
     information__table__1.innerHTML = "";
     let h3 = document.createElement("h3");
+    h3.style.fontSize = "32px"; // Aumenta el tamaño de fuente del título a 32 píxeles
+    h3.style.color = "red";
     h3.textContent = "Capsule Launches";
     let hr = document.createElement("hr");
     let div = document.createElement("div");
     div.classList.add("table__container__1");
     let div1 = document.createElement("div");
     let span1 = document.createElement("span");
+    span1.style.fontSize = "24px"; // Aumenta el tamaño de fuente del texto a 24 píxeles
     span1.textContent = "Launches";
     let strong1 = document.createElement("strong");
+    strong1.style.fontSize = "24px"; // Aumenta el tamaño de fuente del texto a 24 píxeles
     strong1.textContent = `${Cores.launches}`;
     div1.append(span1, strong1);
     div.append(div1);
     information__table__1.append(h3, hr, div);
-};
-
+}
 
 //////////////////////////////////// DRAGONES ////////////////////////////////////////////7
 

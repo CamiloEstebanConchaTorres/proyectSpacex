@@ -18,7 +18,11 @@ import {
     informationCapsuleStatus,
     informationCapsuleLastUpdate,
     informationCoresStatus,
-    informationCoreLastUpdate
+    informationCoreLastUpdate,
+    informationDragons,
+    informationLaunchCostDragons,
+    informationFirstFlightDragons,
+    informationWebDragons
 } from "./information.js";
 import { 
     tableRocketColum1, 
@@ -420,6 +424,10 @@ const getDragonsId = async(e)=>{
     await informDragonLaunchPayloadMass(Dragons.launch_payload_mass)
     await informDragonData();
     await tableDragonColumn1(Dragons)
+    await informationDragons(Dragons)
+    await informationLaunchCostDragons(Dragons)
+    await informationFirstFlightDragons(Dragons)
+    await informationWebDragons(Dragons)
 }
 export const paginationDragons = async()=>{
     let Dragons = await getAllDragons();
