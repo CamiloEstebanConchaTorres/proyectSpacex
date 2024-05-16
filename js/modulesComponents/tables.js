@@ -328,3 +328,93 @@ export const tableCoresLaunchesland = async (Land) => {
     div.append(div1);
     information__table__1.append(h3, hr, div);
 };
+
+////////////////////////////////// SHIPS /////////////7
+
+
+
+export const tableCoresLauncheslandship = async (Ships) => {
+    let information__table__1 = document.querySelector("#information__table__1");
+    information__table__1.innerHTML = "";
+    let h3 = document.createElement("h3");
+    h3.textContent = "Information Ship"
+    let hr = document.createElement("hr");
+    information__table__1.append(h3, hr)
+
+    let div = document.createElement("div");
+    div.classList.add("table__container__1");
+    // 
+    let div1 = document.createElement("div");
+    let span1 = document.createElement("span");
+    span1.textContent = "IMO"
+    let strong1 = document.createElement("strong");
+    strong1.textContent = `${Ships.imo}`
+    div1.append(span1, strong1)
+
+    // 
+    let div2 = document.createElement("div");
+    let span2 = document.createElement("span");
+    span2.textContent = "MMSI"
+    let strong2 = document.createElement("strong");
+    strong2.textContent = `${Ships.mmsi}`
+    div2.append(span2, strong2)
+    
+    // 
+    let div3 = document.createElement("div");
+    let span3 = document.createElement("span");
+    span3.textContent = "ABS"
+    let strong3 = document.createElement("strong");
+    strong3.textContent = `${Ships.abs}`
+    div3.append(span3, strong3)
+
+    // 
+    let div4 = document.createElement("div");
+    let span4 = document.createElement("span");
+    span4.textContent = "Class"
+    let strong4 = document.createElement("strong");
+    strong4.textContent = `${Ships.class}`
+    div4.append(span4, strong4)
+
+    div.append(div1, div2, div3, div4)
+    information__table__1.append(div)
+}
+
+
+export const tableCoresLauncheslandsship = async (Ships) => {
+    let information__table__1 = document.querySelector("#information__table__2");
+    information__table__1.innerHTML = "";
+    let h3 = document.createElement("h3");
+    h3.textContent = "Information Ship"
+    let hr = document.createElement("hr");
+    information__table__1.append(h3, hr)
+
+    let div = document.createElement("div");
+    div.classList.add("table__container__1");
+    // 
+    let div1 = document.createElement("div");
+    let span1 = document.createElement("span");
+    span1.textContent = "IMO"
+    let strong1 = document.createElement("strong");
+    strong1.textContent = `${Ships.mass_kg}`
+    div1.append(span1, strong1)
+
+    // 
+    let div2 = document.createElement("div");
+    let span2 = document.createElement("span");
+    span2.textContent = "MMSI"
+    let strong2 = document.createElement("strong");
+    strong2.textContent = `${Ships.mass_lbs}`
+    div2.append(span2, strong2)
+    
+    // 
+    let div3 = document.createElement("div");
+    let span3 = document.createElement("span");
+    span3.textContent = "ABS"
+    let strong3 = document.createElement("strong");
+    strong3.textContent = `${Ships.year_built}`
+    div3.append(span3, strong3)
+
+    
+    div.append(div1, div2, div3)
+    information__table__1.append(div)
+}

@@ -217,3 +217,19 @@ export const createCenteredImage = () => {
     // Insertar la imagen en el contenedor
     container.appendChild(img);
 }
+
+export const createCenteredImageship = () => {
+    // Crear la imagen
+    let img = document.createElement('img');
+    img.src = 'storage/img/giphy-unscreen.gif'; // Reemplaza con la ruta de tu imagen
+    img.style.display = 'block';
+    img.style.margin = '0 auto';
+    img.style.maxWidth = '50%'; // Ajusta el ancho máximo de la imagen al 50% del contenedor
+    img.style.height = 'auto'; // Mantiene la proporción de la imagen
+
+    // Obtener el elemento donde se insertará la imagen
+    let container = document.getElementById('section__information__q');
+
+    // Insertar la imagen en el contenedor
+    container.appendChild(img);
+}

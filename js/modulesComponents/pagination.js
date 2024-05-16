@@ -35,7 +35,9 @@ import {
     informationFirstFlightlandstatustypelocality,
     informationFirstFlightlandstatustypelocalityredet,
     informationFirstFlightlandstatustypelocalityredetship,
-    informationFirstFlightlandstatustypelocalityredetshipt
+    informationFirstFlightlandstatustypelocalityredetshipt,
+    informationFirstFlightlandstatusypelocalityredetshipt,
+    informationFirtFlightlandstatustypelocalityre
 } from "./information.js";
 import { 
     tableRocketColum1, 
@@ -45,7 +47,9 @@ import {
     tableCoresLaunches,
     tableCoreLaunchesid,
     tableDragonColumn1,
-    tableCoresLaunchesland
+    tableCoresLaunchesland,
+    tableCoresLauncheslandship,
+    tableCoresLauncheslandsship
 } from "./tables.js";
 import { 
     informRocketEngineThrustSeaLevel, 
@@ -53,7 +57,8 @@ import {
     informRocketData,
     informDragonLaunchPayloadMass,
     informDragonData,
-    createCenteredImage
+    createCenteredImage,
+    createCenteredImageship
 } from "./inform.js";
 import { 
     imageRockets,
@@ -670,6 +675,11 @@ const getShipsId = async(e)=>{
     await imageShips([Ships])
     await informationFirstFlightlandstatustypelocalityredetship(Ships)
     await informationFirstFlightlandstatustypelocalityredetshipt(Ships)
+    await informationFirstFlightlandstatusypelocalityredetshipt(Ships)
+    await informationFirtFlightlandstatustypelocalityre(Ships)
+    await tableCoresLauncheslandship(Ships)
+    await tableCoresLauncheslandsship(Ships)
+    await createCenteredImageship(Ships)
 }
 export const paginationShips = async()=>{
     let Ships = await getAllShips();
